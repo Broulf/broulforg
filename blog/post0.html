@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <style>
+      code {
+        font-family: Consolas,"courier new";
+        color: crimson;
+        background-color: #fffeea;
+        padding: 2px;
+        font-size: 105%;
+      }
+    </style>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Docker - Volume Location</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-blog-template.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Server Blog</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Blog Post Content Column -->
+        <div class="col-lg-12">
+
+          <!-- Blog Post -->
+
+          <!-- Title -->
+          <h1 class="post-title">HowTo: Move the Docker Volume and Container Storage Location on Windows 10</h1>
+
+          <!-- Author -->
+          <p class="lead">
+            by Anthony
+          </p>
+
+          <hr>
+
+          <!-- Date/Time -->
+          <p><span class="glyphicon glyphicon-time"></span> Posted on April 2, 2022</p>
+
+          <hr>
+
+          <!-- Post Content -->
+          <p>In my journey to running a Windows 10 server on my home network, I moved to installing and using the docker desktop for windows environments. 
+              This has been a great tool that I have been finding as a great learning device, as well as something to take the pain of physically running individual servers. 
+              However, as I am new to using WSL and docker via the Windows Subsystem for Linux, I was struggling with setting the actual WSL volume destination for Docker Desktop that was installed on my C:\ drive.
+            </p>
+          <p>I consistently googled, and googled, poured through Stack Overflow questions and in my attempt to find a way of moving the container storage, I didn’t find one. 
+              So, of course, I did what any normal person would do in that situation, I slept (to be fair it was 4am and I was incredibly tired). 
+              The next day, I stumble across a fantastic blog post by <a href="https://blog.codetitans.pl/post/howto-docker-over-wsl2-location/">@CodeTitans</a>, 
+              in which they discuss the new implementation of the WSL 2 in Docker Windows and moving on from the old Hyper-V based approach from the good old days. 
+              This was a fantastic read and completely mirrored my thoughts and issues with the program and Windows itself. 
+              One major thing that was changed with the implementation of WSL 2 was the removal or lack of a screen that would 
+              allow you to set and define the location of where docker should download and create volume locations.</p>
+          <p>I don’t understand why, but because of such practices (i.e., most of developer tools blindly assuming only drive C:\ exists inside the PC and is also an infinite storage device at the same time), 
+              the free space on a system drive runs extremely fast towards 0GB available. It would be a god-sent if Microsoft or Docker themselves was able to add a simple conf file that would allow us to 
+              manually adjust the WSL VHDX location. There is Microsoft documentation, which describes a WSL configuration file, but it seems to be a bit old these days. At the same time, 
+              I couldn’t find anything useful on Docker website itself. I found a way of mounting drive into WSL itself, 
+              via <a href="https://docs.microsoft.com/en-us/windows/wsl/wsl2-mount-disk">Microsoft Documentation</a>, however, my drives were already mapped… so why can’t I just store information there? 
+              Turns out you can, by backing-up the VHDX drive itself and moves it to a different hard drive al together it involves a semi-hackery way of doing it, yet it’s pretty simple: </p> <br>
+          <hr>
+          <ol>
+            <ol><li><p>Quit Docker Desktop</p></li>
+                <li><p>Open Command Prompt (or PowerShell)</p></li>
+                <li><p>List existing <code>WSL</code> storages</p>
+                <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wsl --list -v</code></pre></div>
+                <p>Expected output:</p>
+                <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">NAME                   STATE           VERSION                                          * docker-desktop       Running         2                                                &nbsp&nbspdocker-desktop-data  Running         2</code></pre></div></li>
+                <li><p>Turn off <code>WSL</code></p>
+                <p>Output:</p>
+                <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">NAME                   STATE           VERSION                                          * docker-desktop       Stopped         2                                                &nbsp&nbspdocker-desktop-data  Stopped         2</code></pre></div></li>
+                <li><p>Create the following path (with all subfolders):</p><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plain" data-lang="plain">$ mkdir E:\Docker\wsl\data\</code></pre></div></li>
+                <li><p>Export the containers and their data. This step can actually take some time depending on the size of the original <code>ext4.vhdx</code> file.</p><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wsl --export docker-desktop-data <span style="color:#4070a0">"E:\Docker\wsl\data\docker-desktop-data.tar"</span></code></pre></div></li>
+                <li><p>Unregister the container data from <code>WSL</code>. It will also automatically delete the <code>ext4.vhdx</code> from the original location.</p><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wsl --unregister docker-desktop-data</code></pre></div></li>
+                <li><p>Import the container data, but keep it in another location (i.e. on drive <code>E:</code> as defined above). This will automatically create <code>ext4.vhdx</code> file from the backup.</p><div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ wsl --import docker-desktop-data <span style="color:#4070a0">"E:\Docker\wsl\data"</span> <span style="color:#4070a0">"E:\Docker\wsl\data\docker-desktop-data.tar"</span> --version <span style="color:#40a070">2</span></code></pre></div></li>
+                <li><p>Delete the exported .tar file: <code>E:\Docker\wsl\data\docker-desktop-data.tar</code> and nothing more!</p></li><li><p>Start Docker Desktop and run your containers.</p></li></ol>
+          </ol>
+          <hr>
+
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; <b>Broulf</b> 2022</p>
+          </div>
+          <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>

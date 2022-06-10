@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:podcast="https://podcastindex.org/namespace/1.0" xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" xml:lang="en" version="2.0">
+  <channel>
+    <title><![CDATA[Broulf Cast]]></title>
+    <link>https://broulf.org/feed/</link>
+    <atom:link href="https://media.rss.com/broulfcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link rel="hub" href="https://hub.livewire.io/"/>
+    <description><![CDATA[Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf]]></description>
+    <generator>RSS.com v1.5.6</generator>
+    <lastBuildDate>Fri, 10 Jun 2022 02:59:33 GMT</lastBuildDate>
+    <language>en</language>
+    <copyright><![CDATA[Broulf 2022]]></copyright>
+    <itunes:image href="https://media.rss.com/broulfcast/20220610_020619_63f262e187e99bc0875176c828f2e731.jpg"/>
+    <image>
+      <url>https://media.rss.com/broulfcast/20220610_020619_63f262e187e99bc0875176c828f2e731.jpg</url>
+      <title>Broulf Cast</title>
+      <link>https://broulf.org/feed/</link>
+    </image>
+    <itunes:summary><![CDATA[Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf]]></itunes:summary>
+    <podcast:locked owner="thesparkmods@gmail.com">Yes</podcast:locked>
+    <itunes:author>Broulf</itunes:author>
+    <itunes:owner>
+      <itunes:name>Broulf</itunes:name>
+      <itunes:email>thesparkmods@gmail.com</itunes:email>
+    </itunes:owner>
+    <itunes:explicit>no</itunes:explicit>
+    <itunes:type>episodic</itunes:type>
+    <itunes:category text="Education">
+      <itunes:category text="Language Learning"/>
+    </itunes:category>
+    <itunes:category text="Fiction">
+      <itunes:category text="Comedy Fiction"/>
+    </itunes:category>
+    <itunes:category text="Fiction">
+      <itunes:category text="Drama"/>
+    </itunes:category>
+    <item>
+      <title><![CDATA[BroulfCast Episode 2]]></title>
+      <itunes:title><![CDATA[BroulfCast Episode 2]]></itunes:title>
+      <itunes:summary>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</itunes:summary>
+      <description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
+      <link>https://rss.com/podcasts/broulfcast/515405</link>
+      <enclosure url="https://broulf.org/feed/Test2.mp3" length="285145" type="audio/mpeg"/>
+      <guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+      <itunes:image href="https://media.rss.com/broulfcast/20220610_020619_63f262e187e99bc0875176c828f2e731.jpg"/>
+      <itunes:duration>49</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:episode>1</itunes:episode>
+      <itunes:season>1</itunes:season>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 10 Jun 2022 03:23:00 GMT</pubDate>
+    </item>
+    <item>
+      <title><![CDATA[BroulfCast Episode 1]]></title>
+      <itunes:title><![CDATA[BroulfCast Episode 1]]></itunes:title>
+      <itunes:summary>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</itunes:summary>
+      <description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
+      <link>https://rss.com/podcasts/broulfcast/515405</link>
+      <enclosure url="https://broulf.org/feed/Test1.mp3" length="285145" type="audio/mpeg"/>
+      <guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+      <itunes:image href="https://media.rss.com/broulfcast/20220610_020619_63f262e187e99bc0875176c828f2e731.jpg"/>
+      <itunes:duration>48</itunes:duration>
+      <itunes:episodeType>full</itunes:episodeType>
+      <itunes:episode>1</itunes:episode>
+      <itunes:season>1</itunes:season>
+      <itunes:explicit>no</itunes:explicit>
+      <pubDate>Fri, 10 Jun 2022 02:59:00 GMT</pubDate>
+    </item>
+  </channel>
+</rss>

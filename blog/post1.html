@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>HTTPS - HTTPS SSL Encryption</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/simple-blog-template.css" rel="stylesheet">
+  </head>
+
+  <body>
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+      <div class="container">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">Server Blog</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        </div>
+        <!-- /.navbar-collapse -->
+      </div>
+      <!-- /.container -->
+    </nav>
+
+
+    <!-- Page Content -->
+    <div class="container">
+
+      <div class="row">
+
+        <!-- Blog Post Content Column -->
+        <div class="col-lg-12">
+          <!-- Blog Post -->
+          <!-- Title -->
+          <h1 class="post-title">Adding HTTPS and SSL Encryption to a Domain and it's Sub-Domains</h1>
+          <!-- Author -->
+          <p class="lead">
+            by Anthony
+          </p>
+
+          <hr>
+
+          <!-- Date/Time -->
+          <p><span class="glyphicon glyphicon-time"></span> Posted on April 2, 2022</p>
+
+          <hr>
+
+          <!-- Post Content -->
+          <p>
+            Over the past few days, I have been attempting to add HTTPS and SSL encryption bases to my website and its sub-domains. 
+            In this process, I encountered a number of issues when trying to learn how to add basic encryption to my website's static dashboard. 
+            However, once I figured out how to do it, I was able to quickly convert all my domain and sub-domains pages to HTTPS from HTTP.
+          </p>
+          <p>
+            The way I went about this was by using <a href="https://certbot.eff.org/instructions?ws=webproduct&os=windows">Certbot</a> 
+            for my SSL encryption files and <a href="https://nginx.org">NGINX</a> as my frontend server. 
+            I will list the steps and the process I went through to add the encryption to the sites. 
+            Certbot has been great and is an incredibly easy way of getting access to fullchain and privkey files. 
+          </p>
+
+          <hr>
+          
+          <ol> <!-- <li><p></p></li> -->
+            <li><p>Installing and using Certbot</p></li>
+            <ol>
+              <li><p>Install <a href="https://certbot.eff.org/instructions?ws=webproduct&os=windows">Certbot</a></p></li>
+              <li><p>Open <b>CMD</b> as Administrator and run the following command to make sure Certbot is installed properly</p></li>
+              <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ certbot --help</code></pre></div>
+              <li><p>Once installed, run the following command to actually create the SSL files</p></li>
+              <div class="highlight"><pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$ certbot certonly --standalone</code></pre></div>
+              <li><p>Once you’re done, make sure to write down the location for the key and fullchain files as you’ll need that later</p></li>
+            </ol>
+            <li><p>Adding HTTPS and SSL</p></li>
+            <ol>
+              <li><p>Open your <b>nginx.conf</b> <i>(nginx/conf/nginx.conf)</i> in your editor of choice, the first thing we’ll do is set our webserver to use HTTPS</p></li>
+              <li><p>Use the previous Certbot instructions to create SSL files for your domain domain.com </p></li>
+              <li><p>Next in nginx.conf add the following code (nginx.conf) that listens on port 443, adds SSL encryption and then sends the index.html file for viewing</p></li>
+              <div class="highlight">
+                <pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"># Adds HTTPS and SSL encryption to a webserver
+server {
+        listen       443 ssl;
+        server_name  localhost;
+
+        ssl_certificate      C:\Certbot\live\domain.com\fullchain.pem;
+        ssl_certificate_key  C:\Certbot\live\domain.com\privkey.pem;
+
+        ssl_session_cache    shared:SSL:1m;
+        ssl_session_timeout  5m;
+
+        ssl_ciphers  HIGH:!aNULL:!MD5;
+        ssl_prefer_server_ciphers  on;
+
+        location C:\Users\location {
+            root   html;
+            index  index.html;
+        }
+    }
+
+# Forward HTTP -> HTTPS
+server {
+  listen 80;
+  server_name domain.com;
+    
+  return 301 https://$host$request_uri;
+}</code></pre></div>
+              <li><p>Congratulations, your webserver now has HTTPS and SSL encryption</p></li>
+              <li><p>Now, to add encryption to your subdomains that point to a service you want (i.e., Plex, nextcloud, etc.) </p></li>
+              <li><p>Rerun the previous Certbot certification and add your sub domain sub.domain.com</p></li>
+              <li><p>Then add the following code to your nginx.conf file</p></li>
+              <div class="highlight">
+                <pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"># adds HTTPS and SSL encryption to a subdomain
+server {
+        listen 443 ssl http2;
+        listen [::]:443 ssl http2;
+
+        server_name sub.domain.com;
+
+        ssl_certificate      C:\Certbot\live\sub.domain.com\fullchain.pem;
+        ssl_certificate_key  C:\Certbot\live\sub.domain.com\privkey.pem;
+
+        client_max_body_size 0;
+        underscores_in_headers on;
+
+        location ~ {
+            proxy_set_header Host $host;
+            proxy_set_header X-Real-IP $remote_addr;
+            proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+            proxy_set_header X-Forwarded-Proto $scheme;
+            add_header Front-End-Https on;
+
+            proxy_headers_hash_max_size 512;
+            proxy_headers_hash_bucket_size 64;
+
+            proxy_buffering off;
+            proxy_redirect off;
+            proxy_max_temp_file_size 0;
+            proxy_pass http://127.0.0.1:PORTYOUWANTHERE;
+       }
+    }
+</code></pre></div>
+            </ol>
+          </ol>
+
+          <hr>
+
+          <p>Useful links that I found helpful in my journey to understanding and add SSL and HTTPS encryption to my website and subdomains:</p>
+          <li><p><a href="https://breuer.dev/tutorial/Setup-NextCloud-FrontEnd-Nginx-SSL-Backend-Apache2">https://breuer.dev/tutorial/Setup-NextCloud-FrontEnd-Nginx-SSL-Backend-Apache2</a></p></li>
+          <li><p><a href="https://breuer.dev/tutorial/Nginx-Server-Blocks.html">https://breuer.dev/tutorial/Nginx-Server-Blocks.html</a></p></li>
+
+          <hr>
+
+        </div>
+      </div>
+      <!-- /.row -->
+
+    </div>
+    <!-- /.container -->
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12">
+            <p>Copyright &copy; <b>Broulf</b> 2022</p>
+          </div>
+          <!-- /.col-lg-12 -->
+        </div>
+        <!-- /.row -->
+      </div>
+    </footer>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+  </body>
+
+</html>
