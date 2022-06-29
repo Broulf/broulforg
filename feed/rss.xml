@@ -3,20 +3,20 @@
   <channel>
     <title><![CDATA[Broulf Cast]]></title>
     <link>https://broulf.org/feed/</link>
-    <atom:link href="https://media.rss.com/broulfcast/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://broulf.org/feed/rss.xml" rel="self" type="application/rss+xml"/>
     <atom:link rel="hub" href="https://hub.livewire.io/"/>
-    <description><![CDATA[Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf]]></description>
-    <generator>RSS.com v1.5.6</generator>
+    <description><![CDATA[Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf]]></description>
+    <generator>Broulf Appender</generator>
     <lastBuildDate>Fri, 10 Jun 2022 02:59:33 GMT</lastBuildDate>
     <language>en</language>
     <copyright><![CDATA[Broulf 2022]]></copyright>
-    <itunes:image href="https://media.rss.com/broulfcast/20220610_020619_63f262e187e99bc0875176c828f2e731.jpg"/>
+    <itunes:image href="https://broulf.org/feed/BroulfCast.jpg"/>
     <image>
-      <url>https://media.rss.com/broulfcast/20220610_020619_63f262e187e99bc0875176c828f2e731.jpg</url>
+      <url>https://broulf.org/feed/BroulfCast.jpg</url>
       <title>Broulf Cast</title>
       <link>https://broulf.org/feed/</link>
     </image>
-    <itunes:summary><![CDATA[Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf]]></itunes:summary>
+    <itunes:summary><![CDATA[Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf]]></itunes:summary>
     <podcast:locked owner="thesparkmods@gmail.com">Yes</podcast:locked>
     <itunes:author>Broulf</itunes:author>
     <itunes:owner>
@@ -34,37 +34,134 @@
     <itunes:category text="Fiction">
       <itunes:category text="Drama"/>
     </itunes:category>
-    <item>
-      <title><![CDATA[BroulfCast Episode 2]]></title>
-      <itunes:title><![CDATA[BroulfCast Episode 2]]></itunes:title>
-      <itunes:summary>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</itunes:summary>
-      <description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
-      <link>https://rss.com/podcasts/broulfcast/515405</link>
-      <enclosure url="https://broulf.org/feed/Test2.mp3" length="285145" type="audio/mpeg"/>
-      <guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
-      <itunes:image href="https://media.rss.com/broulfcast/20220610_020619_63f262e187e99bc0875176c828f2e731.jpg"/>
-      <itunes:duration>49</itunes:duration>
-      <itunes:episodeType>full</itunes:episodeType>
-      <itunes:episode>1</itunes:episode>
-      <itunes:season>1</itunes:season>
-      <itunes:explicit>no</itunes:explicit>
-      <pubDate>Fri, 10 Jun 2022 03:23:00 GMT</pubDate>
-    </item>
-    <item>
-      <title><![CDATA[BroulfCast Episode 1]]></title>
-      <itunes:title><![CDATA[BroulfCast Episode 1]]></itunes:title>
-      <itunes:summary>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</itunes:summary>
-      <description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
-      <link>https://rss.com/podcasts/broulfcast/515405</link>
-      <enclosure url="https://broulf.org/feed/Test1.mp3" length="285145" type="audio/mpeg"/>
-      <guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
-      <itunes:image href="https://media.rss.com/broulfcast/20220610_020619_63f262e187e99bc0875176c828f2e731.jpg"/>
-      <itunes:duration>48</itunes:duration>
-      <itunes:episodeType>full</itunes:episodeType>
-      <itunes:episode>1</itunes:episode>
-      <itunes:season>1</itunes:season>
-      <itunes:explicit>no</itunes:explicit>
-      <pubDate>Fri, 10 Jun 2022 02:59:00 GMT</pubDate>
-    </item>
+    <!--Input Items-->
+		<item>
+			<title><![CDATA[Broulf Cast - Episode 8]]></title>
+			<itunes:title><![CDATA[Broulf Cast - Episode 8]]></itunes:title>
+			<itunes:summary>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</itunes:summary>
+			<description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
+			<link>https://broulf.org/feed/</link>
+			<enclosure url="https://broulf.org/feed/Test8.mp3" length="285145" type="audio/mpeg"/>
+			<guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+			<itunes:image href="https://broulf.org/feed/BroulfCast.jpg"/>
+			<itunes:duration>511</itunes:duration>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:episode>8</itunes:episode>
+			<itunes:season>1</itunes:season>
+			<itunes:explicit>no</itunes:explicit>
+			<pubDate>Sun, 19 Jun 2022 18:33:30 GMT</pubDate>
+		</item>
+		<item>
+			<title><![CDATA[Broulf Cast - Episode 7]]></title>
+			<itunes:title><![CDATA[Broulf Cast - Episode 7]]></itunes:title>
+			<itunes:summary>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</itunes:summary>
+			<description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
+			<link>https://broulf.org/feed/</link>
+			<enclosure url="https://broulf.org/feed/Test7.mp3" length="285145" type="audio/mpeg"/>
+			<guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+			<itunes:image href="https://broulf.org/feed/BroulfCast.jpg"/>
+			<itunes:duration>46</itunes:duration>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:episode>7</itunes:episode>
+			<itunes:season>1</itunes:season>
+			<itunes:explicit>no</itunes:explicit>
+			<pubDate>Tue, 14 Jun 2022 04:11:30 GMT</pubDate>
+		</item>
+		<item>
+			<title><![CDATA[Broulf Cast - Episode 6]]></title>
+			<itunes:title><![CDATA[Broulf Cast - Episode 6]]></itunes:title>
+			<itunes:summary>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</itunes:summary>
+			<description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
+			<link>https://broulf.org/feed/</link>
+			<enclosure url="https://broulf.org/feed/Test6.mp3" length="285145" type="audio/mpeg"/>
+			<guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+			<itunes:image href="https://broulf.org/feed/BroulfCast.jpg"/>
+			<itunes:duration>62</itunes:duration>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:episode>6</itunes:episode>
+			<itunes:season>1</itunes:season>
+			<itunes:explicit>no</itunes:explicit>
+			<pubDate>Tue, 14 Jun 2022 04:10:30 GMT</pubDate>
+		</item>
+		<item>
+			<title><![CDATA[Broulf Cast - Episode 5]]></title>
+			<itunes:title><![CDATA[Broulf Cast - Episode 5]]></itunes:title>
+			<itunes:summary>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</itunes:summary>
+			<description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
+			<link>https://broulf.org/feed/</link>
+			<enclosure url="https://broulf.org/feed/Test5.mp3" length="285145" type="audio/mpeg"/>
+			<guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+			<itunes:image href="https://broulf.org/feed/BroulfCast.jpg"/>
+			<itunes:duration>46</itunes:duration>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:episode>5</itunes:episode>
+			<itunes:season>1</itunes:season>
+			<itunes:explicit>no</itunes:explicit>
+			<pubDate></pubDate>
+		</item>
+		<item>
+			<title><![CDATA[Broulf Cast - Episode 4]]></title>
+			<itunes:title><![CDATA[Broulf Cast - Episode 4]]></itunes:title>
+			<itunes:summary>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</itunes:summary>
+			<description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
+			<link>https://broulf.org/feed/</link>
+			<enclosure url="https://broulf.org/feed/Test4.mp3" length="285145" type="audio/mpeg"/>
+			<guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+			<itunes:image href="https://broulf.org/feed/BroulfCast.jpg"/>
+			<itunes:duration>42</itunes:duration>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:episode>4</itunes:episode>
+			<itunes:season>1</itunes:season>
+			<itunes:explicit>no</itunes:explicit>
+			<pubDate>Sat, 11 Jun 2022 04:06:00 GMT</pubDate>
+		</item>
+		<item>
+			<title><![CDATA[Broulf Cast - Episode 3]]></title>
+			<itunes:title><![CDATA[Broulf Cast - Episode 3]]></itunes:title>
+			<itunes:summary>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</itunes:summary>
+			<description><![CDATA[<p>Test RSS for BroulfCast, a demo RSS tool and prototype by Broulf</p>]]></description>
+			<link>https://broulf.org/feed/</link>
+			<enclosure url="https://broulf.org/feed/Test3.mp3" length="285145" type="audio/mpeg"/>
+			<guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+			<itunes:image href="https://broulf.org/feed/BroulfCast.jpg"/>
+			<itunes:duration>46</itunes:duration>
+			<itunes:episodeType>full</itunes:episodeType>
+			<itunes:episode>3</itunes:episode>
+			<itunes:season>1</itunes:season>
+			<itunes:explicit>no</itunes:explicit>
+			<pubDate>Sat, 11 Jun 2022 04:06:00 GMT</pubDate>
+		</item>
+    	<item>
+    	  <title><![CDATA[Broulf Cast - Episode 2]]></title>
+    	  <itunes:title><![CDATA[Broulf Cast - Episode 2]]></itunes:title>
+    	  <itunes:summary>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</itunes:summary>
+    	  <description><![CDATA[<p>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</p>]]></description>
+    	  <link>https://broulf.org/feed</link>
+    	  <enclosure url="https://broulf.org/feed/Test2.mp3" length="285145" type="audio/mpeg"/>
+    	  <guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+    	  <itunes:image href="https://broulf.org/feed/BroulfCast.jpg"/>
+    	  <itunes:duration>49</itunes:duration>
+    	  <itunes:episodeType>full</itunes:episodeType>
+    	  <itunes:episode>2</itunes:episode>
+    	  <itunes:season>1</itunes:season>
+    	  <itunes:explicit>no</itunes:explicit>
+    	  <pubDate>Fri, 10 Jun 2022 03:23:00 GMT</pubDate>
+    	</item>
+    	<item>
+    	  <title><![CDATA[Broulf Cast - Episode 1]]></title>
+    	  <itunes:title><![CDATA[Broulf Cast - Episode 1]]></itunes:title>
+    	  <itunes:summary>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</itunes:summary>
+    	  <description><![CDATA[<p>Test RSS for Broulf Cast, a demo RSS tool and prototype by Broulf</p>]]></description>
+    	  <link>https://broulf.org/feed</link>
+    	  <enclosure url="https://broulf.org/feed/Test1.mp3" length="285145" type="audio/mpeg"/>
+    	  <guid isPermaLink="false">f903f6ca-0271-45d8-b363-439aebf65117</guid>
+    	  <itunes:image href="https://broulf.org/feed/BroulfCast.jpg"/>
+    	  <itunes:duration>48</itunes:duration>
+    	  <itunes:episodeType>full</itunes:episodeType>
+    	  <itunes:episode>1</itunes:episode>
+    	  <itunes:season>1</itunes:season>
+    	  <itunes:explicit>no</itunes:explicit>
+    	  <pubDate>Fri, 10 Jun 2022 02:59:00 GMT</pubDate>
+    	</item>
   </channel>
 </rss>
