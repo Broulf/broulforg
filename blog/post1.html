@@ -65,14 +65,13 @@
           <!-- Post Content -->
           <p>
             Over the past few days, I have been attempting to add HTTPS and SSL encryption bases to my website and its sub-domains. 
-            In this process, I encountered a number of issues when trying to learn how to add basic encryption to my website's static dashboard. 
-            However, once I figured out how to do it, I was able to quickly convert all my domain and sub-domains pages to HTTPS from HTTP.
+            However, I encountered a number of issues when trying to add basic encryption to my website's static dashboard. 
+            However, once I figured out how to do it, I was able to quickly convert all my domain, and sub-domains pages to HTTPS from HTTP.
           </p>
           <p>
             The way I went about this was by using <a href="https://certbot.eff.org/instructions?ws=webproduct&os=windows">Certbot</a> 
             for my SSL encryption files and <a href="https://nginx.org">NGINX</a> as my frontend server. 
             I will list the steps and the process I went through to add the encryption to the sites. 
-            Certbot has been great and is an incredibly easy way of getting access to fullchain and privkey files. 
           </p>
 
           <hr>
@@ -90,8 +89,8 @@
             <li><p>Adding HTTPS and SSL</p></li>
             <ol>
               <li><p>Open your <b>nginx.conf</b> <i>(nginx/conf/nginx.conf)</i> in your editor of choice, the first thing we’ll do is set our webserver to use HTTPS</p></li>
-              <li><p>Use the previous Certbot instructions to create SSL files for your domain domain.com </p></li>
-              <li><p>Next in nginx.conf add the following code (nginx.conf) that listens on port 443, adds SSL encryption and then sends the index.html file for viewing</p></li>
+              <li><p>Use the previous Certbot instructions to create SSL files for your domain <i>domain.com</i></p></li>
+              <li><p>Next, in nginx.conf add the following code that listens on port 443, adds SSL encryption, and then sends the index.html file for viewing</p></li>
               <div class="highlight">
                 <pre style="background-color:#f0f0f0;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash"># Adds HTTPS and SSL encryption to a webserver
 server {
@@ -120,7 +119,7 @@ server {
     
   return 301 https://$host$request_uri;
 }</code></pre></div>
-              <li><p>Congratulations, your webserver now has HTTPS and SSL encryption</p></li>
+              <li><p>Congratulations, your web-server now has HTTPS and SSL encryption</p></li>
               <li><p>Now, to add encryption to your subdomains that point to a service you want (i.e., Plex, nextcloud, etc.) </p></li>
               <li><p>Rerun the previous Certbot certification and add your sub domain sub.domain.com</p></li>
               <li><p>Then add the following code to your nginx.conf file</p></li>
